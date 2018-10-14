@@ -5,7 +5,8 @@ class Searchbox extends Component {
  constructor(){
    super();
    this.state = {
-    suggestions: []
+    suggestions: [],
+    selectedSuggestionIndex : -1
    }
  }
 
@@ -91,11 +92,21 @@ class Searchbox extends Component {
     })
  }
 
- handleKeyPress(event){
-   if( event.keyCode == 40){
-     console.log('go down');
+ handleKeyDown(event){
+   let length = this.state.suggestions.length;
+   if( !length ){
+     return;
+   }
+   if( event.keyCode == 40 ){
+      let selected = (this.state.selectedSuggestionIndex + 1) % length;
+      this.setState({
+        selectedSuggestionIndex: selected
+      });
    } else {
-     console.log(' go up');
+      let selected = (this.state.selectedSuggestionIndex - 1) % length;
+      this.setState({
+        selectedSuggestionIndex: selected
+      });
    }
  }
 
@@ -112,17 +123,16 @@ class Searchbox extends Component {
  }
 
  render() {
-   let suggestions = this.state.suggestions;
-   const suggestionsList = suggestions.map((item, index) => <Card key={item.id} address={item} /> );
-
+   let { selectedSuggestionIndex, suggestions } = this.state;
+   const suggestionsList = suggestions.map((item, index) => <Card key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
    return (
      <div className="form-wrapper">
         <div className="form">
         <input className="field"
-          tabindex="1"
+          tabIndex="1"
           placeholder="Search users by id, name and address"
           ref={input => this.search = input}
-          onKeyDown={ this.handleKeyPress.bind(this)} 
+          onKeyDown={ this.handleKeyDown.bind(this)} 
           onChange={this.handleInputChange.bind(this)}
         />
         <div id="all-suggestions">

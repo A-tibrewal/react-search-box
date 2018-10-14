@@ -7,9 +7,9 @@ class Card extends Component {
  }
 
  render(){
-     let { address } = this.props;
+     let { address, selected } = this.props;
      return(
-        <div className="card" tabindex="1">
+        <div className={ "card" + (selected ? " selected" : "") } tabIndex="1">
             <div className="card__id" >{address.id }</div>
             <div className="card__name" >{address.name }</div>
             <div className="card__address" >{address.address }</div>
