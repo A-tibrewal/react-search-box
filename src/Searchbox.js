@@ -97,17 +97,19 @@ class Searchbox extends Component {
    if( !length ){
      return;
    }
+   let selected;
    if( event.keyCode == 40 ){
-      let selected = (this.state.selectedSuggestionIndex + 1) % length;
-      this.setState({
-        selectedSuggestionIndex: selected
-      });
+      selected = (this.state.selectedSuggestionIndex + 1) % length;
    } else {
-      let selected = (this.state.selectedSuggestionIndex - 1) % length;
-      this.setState({
-        selectedSuggestionIndex: selected
-      });
+      if( this.state.selectedSuggestionIndex == -1 ||  this.state.selectedSuggestionIndex == 0 ){
+        selected = length - 1;
+      } else {
+        selected = (  this.state.selectedSuggestionIndex - 1 ) % length;
+      }
    }
+    this.setState({
+      selectedSuggestionIndex: selected
+    });
  }
 
 
