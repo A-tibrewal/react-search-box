@@ -113,12 +113,12 @@ class Searchbox extends Component {
       } else {
         selected = (  this.state.selectedSuggestionIndex - 1 ) % length;
       }
+   } else {
+     selected = -1;
    }
-  if( selected > -1 ){
-    this.setState({
+   this.setState({
       selectedSuggestionIndex: selected
-    });
-  }
+   });
  }
 
   setSuggestionIndex( index ){
