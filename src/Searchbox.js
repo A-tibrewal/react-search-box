@@ -103,10 +103,11 @@ class Searchbox extends Component {
    if( !length ){
      return;
    }
-   console.log( event.keyCode );
    if( event.keyCode == 40 ){
+      event.preventDefault();
       selected = (this.state.selectedSuggestionIndex + 1) % length;
    } else if( event.keyCode == 38 ) {
+      event.preventDefault();
       if( this.state.selectedSuggestionIndex == -1 ||  this.state.selectedSuggestionIndex == 0 ){
         selected = length - 1;
       } else {
