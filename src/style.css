@@ -41,7 +41,16 @@ div:focus, input:focus{
   flex-direction: column;
   line-height: 25px;
   padding: 10px;
-  border-bottom: 1px solid #e5e5e5;
+  border:1px solid #e5e5e5;
+  border-top: none;
+}
+
+.no-user-card{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8e8e8;
 }
 
 .card.selected{

@@ -84,7 +84,7 @@ class Searchbox extends Component {
                          address={item} 
                          selected={ selectedSuggestionIndex === index }/> 
                         );
-    const noSuggestions = (<div> No results Found </div>)
+    const noSuggestions = (<div className="no-user-card"> No User Found </div>)
     
     const suggestionsWrapper = query && suggestions.length ? suggestionsList : ( query ? noSuggestions : null );                  
    return (
@@ -93,7 +93,7 @@ class Searchbox extends Component {
         <input className="field"
           tabIndex="1"
           id="input-search-field"
-          placeholder="Search users by id, name and address"
+          placeholder="Search users by Id, name and address"
           ref={input => this.search = input}
           onKeyDown={ this.handleKeyDown.bind(this)} 
           onChange={this.handleInputChange.bind(this)}
