@@ -5,6 +5,13 @@
   height: 400px;
   flex-direction: column;
 }
+
+input,
+textarea,
+[contenteditable] {
+  caret-color:#14d46f;
+}
+
 div,i,span {
   color: rgba(0, 0, 0, 0.7);
 }

@@ -21,14 +21,14 @@ class Card extends Component {
  }
 
  render(){
-     let { address, selected, query } = this.props;
+     let { user, selected, query } = this.props;
      return(
         <div className={ "card" + (selected ? " selected" : "") } tabIndex="1" ref={ref => this.currentDiv = ref} 
         onMouseMove={ this.handleMouseEnter.bind(this)}>
-            <div className="card__id" ><b><Content query={query} content={address.id } /></b></div>
-            <div className="card__name" ><i><Content query={query} content={address.name } /></i></div>
-            <div className="card__address" ><small><Content query={query} content={address.address } /></small></div>
-            <div className="card__pincode" ><small><Content query={query} content={address.pincode } /></small></div>
+            <div className="card__id" ><b><Content query={query} content={user.id } /></b></div>
+            <div className="card__name" ><i><Content query={query} content={user.name } /></i></div>
+            <div className="card__address" ><small><Content query={query} content={user.address } /></small></div>
+            <div className="card__pincode" ><small><Content query={query} content={user.pincode } /></small></div>
         </div>
      );
  }

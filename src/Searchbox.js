@@ -16,12 +16,13 @@ class Searchbox extends Component {
   return json.all_data;
  }
 
- searchAddress(){
+ searchUsers(){
     let query = this.state.query;
     let all_addresses = this.getJson();
     var filtered = all_addresses.filter(function (el) {
       return el.id.containsString( query ) ||
              el.name.containsString( query )||
+             el.items.containsString( query ) ||
              el.address.containsString( query ) ||
              el.pincode.containsString( query );
     });
@@ -70,7 +71,7 @@ class Searchbox extends Component {
    this.setState({
      query: this.search.value
    }, () => {
-      that.searchAddress();
+      that.searchUsers();
    })
 
  }
@@ -81,7 +82,7 @@ class Searchbox extends Component {
                          <Card query = {query} focusSearchBox={this.focusSearchBox.bind(this)} 
                          setSuggestionIndex={ this.setSuggestionIndex.bind(this) } 
                          index={index} key={item.id} 
-                         address={item} 
+                         user={item} 
                          selected={ selectedSuggestionIndex === index }/> 
                         );
     const noSuggestions = (<div className="no-user-card"> No User Found </div>)
