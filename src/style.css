@@ -16,6 +16,8 @@ div,i,span {
   color: rgba(0, 0, 0, 0.7);
 }
 
+
+
 highlight{
   color: #007ede;
   font-weight: bold;
@@ -60,7 +62,24 @@ div:focus, input:focus{
   background-color: #e8e8e8;
 }
 
+.item-found{
+  display: flex;
+  border: solid thin #ccc;
+  align-items: center;
+  border-right: none;
+  border-left: none;
+}
+
 .card.selected{
   background-color: #fffdda;
+}
+
+.list-dot{
+  height: 5px;
+  width: 5px;
+  background-color: #007ede;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
 }
 
