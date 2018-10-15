@@ -99,25 +99,25 @@ class Searchbox extends Component {
  }
 
  handleKeyDown(event){
-   let length = this.state.suggestions.length;
+   let selected, length = this.state.suggestions.length;
    if( !length ){
      return;
    }
-   let selected;
    console.log( event.keyCode );
    if( event.keyCode == 40 ){
       selected = (this.state.selectedSuggestionIndex + 1) % length;
-   } 
-   else {
+   } else if( event.keyCode == 38 ) {
       if( this.state.selectedSuggestionIndex == -1 ||  this.state.selectedSuggestionIndex == 0 ){
         selected = length - 1;
       } else {
         selected = (  this.state.selectedSuggestionIndex - 1 ) % length;
       }
    }
-  this.setState({
-    selectedSuggestionIndex: selected
-  });
+  if( selected > -1 ){
+    this.setState({
+      selectedSuggestionIndex: selected
+    });
+  }
  }
 
   setSuggestionIndex( index ){
