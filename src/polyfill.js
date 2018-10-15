@@ -1,3 +1,4 @@
+(function(){
 if (!Element.prototype.scrollIntoViewIfNeeded) {
     Element.prototype.scrollIntoViewIfNeeded = function (centerIfNeeded) {
         "use strict";
@@ -59,4 +60,5 @@ if (!Element.prototype.scrollIntoViewIfNeeded) {
             elem = elem.parentNode;
         }
     };
-}
+ }
+})();

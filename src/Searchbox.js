@@ -104,18 +104,20 @@ class Searchbox extends Component {
      return;
    }
    let selected;
+   console.log( event.keyCode );
    if( event.keyCode == 40 ){
       selected = (this.state.selectedSuggestionIndex + 1) % length;
-   } else {
+   } 
+   else {
       if( this.state.selectedSuggestionIndex == -1 ||  this.state.selectedSuggestionIndex == 0 ){
         selected = length - 1;
       } else {
         selected = (  this.state.selectedSuggestionIndex - 1 ) % length;
       }
    }
-    this.setState({
-      selectedSuggestionIndex: selected
-    });
+  this.setState({
+    selectedSuggestionIndex: selected
+  });
  }
 
   setSuggestionIndex( index ){
@@ -140,7 +142,16 @@ class Searchbox extends Component {
 
  render() {
    let { selectedSuggestionIndex, suggestions, query } = this.state;
-   const suggestionsList = suggestions.map((item, index) => <Card query = {query} focusSearchBox={this.focusSearchBox.bind(this)} setSuggestionIndex={ this.setSuggestionIndex.bind(this) } index={index} key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
+   const suggestionsList = suggestions.map((item, index) => 
+                         <Card query = {query} focusSearchBox={this.focusSearchBox.bind(this)} 
+                         setSuggestionIndex={ this.setSuggestionIndex.bind(this) } 
+                         index={index} key={item.id} 
+                         address={item} 
+                         selected={ selectedSuggestionIndex === index }/> 
+                        );
+    const noSuggestions = (<div> No results Found </div>)
+    
+    const suggestionsWrapper = query && suggestions.length ? suggestionsList : ( query ? noSuggestions : null );                  
    return (
      <div className="form-wrapper">
         <div className="form">
@@ -153,7 +164,7 @@ class Searchbox extends Component {
           onChange={this.handleInputChange.bind(this)}
         />
         <div id="all-suggestions">
-          { suggestionsList }
+          { suggestionsWrapper }
         </div>
        </div>
      </div>
