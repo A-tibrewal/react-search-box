@@ -25,10 +25,10 @@ class Card extends Component {
      return(
         <div className={ "card" + (selected ? " selected" : "") } tabIndex="1" ref={ref => this.currentDiv = ref} 
         onMouseMove={ this.handleMouseEnter.bind(this)}>
-            <div className="card__id" >{address.id }</div>
-            <div className="card__name" >{address.name }</div>
-            <div className="card__address" >{address.address }</div>
-            <div className="card__pincode" >{address.pincode }</div>
+            <div className="card__id" ><b>{address.id }</b></div>
+            <div className="card__name" ><i>{address.name }</i></div>
+            <div className="card__address" ><small>{address.address }</small></div>
+            <div className="card__pincode" ><small>{address.pincode }</small></div>
         </div>
      );
  }
