@@ -8,10 +8,10 @@ class Content extends Component {
 
 
  render(){
-     let { content } = this.props;
+     let { content, query } = this.props;
+     content = content.replace( new RegExp( query, 'gi'), '<highlight>$&</highlight>' ); 
      return (
-         <div>
-             { content }
+         <div dangerouslySetInnerHTML={{ __html: content }} >
         </div>
      )
     }

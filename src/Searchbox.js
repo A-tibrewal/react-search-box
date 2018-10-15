@@ -139,8 +139,8 @@ class Searchbox extends Component {
  }
 
  render() {
-   let { selectedSuggestionIndex, suggestions } = this.state;
-   const suggestionsList = suggestions.map((item, index) => <Card focusSearchBox={this.focusSearchBox.bind(this)} setSuggestionIndex={ this.setSuggestionIndex.bind(this) } index={index} key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
+   let { selectedSuggestionIndex, suggestions, query } = this.state;
+   const suggestionsList = suggestions.map((item, index) => <Card query = {query} focusSearchBox={this.focusSearchBox.bind(this)} setSuggestionIndex={ this.setSuggestionIndex.bind(this) } index={index} key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
    return (
      <div className="form-wrapper">
         <div className="form">
