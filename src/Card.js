@@ -8,13 +8,15 @@ class Card extends Component {
 
  componentDidUpdate(){
      if( this.props.selected){
-        this.currentDiv.scrollIntoView();
+        this.currentDiv.scrollIntoView({block: 'end', behavior: 'smooth'});
      }
  }
 
+
  handleMouseEnter(){
-    let { index, setSuggestionIndex } = this.props;
+    let { index, setSuggestionIndex, focusSearchBox } = this.props;
     setSuggestionIndex( index );
+    focusSearchBox();
  }
 
 
@@ -22,7 +24,7 @@ class Card extends Component {
      let { address, selected } = this.props;
      return(
         <div className={ "card" + (selected ? " selected" : "") } tabIndex="1" ref={ref => this.currentDiv = ref} 
-        onMouseEnter={ this.handleMouseEnter.bind(this)}>
+        onMouseMove={ this.handleMouseEnter.bind(this)}>
             <div className="card__id" >{address.id }</div>
             <div className="card__name" >{address.name }</div>
             <div className="card__address" >{address.address }</div>

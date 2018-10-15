@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import ReactDOM from 'react-dom';
 
 class Searchbox extends Component {
  constructor(){
@@ -92,6 +93,11 @@ class Searchbox extends Component {
     })
  }
 
+
+ focusSearchBox(){
+  ReactDOM.findDOMNode(this.search).focus();
+ }
+
  handleKeyDown(event){
    let length = this.state.suggestions.length;
    if( !length ){
@@ -120,6 +126,8 @@ class Searchbox extends Component {
 
 
 
+
+
  handleInputChange(){
    var that = this;
    this.setState({
@@ -132,12 +140,13 @@ class Searchbox extends Component {
 
  render() {
    let { selectedSuggestionIndex, suggestions } = this.state;
-   const suggestionsList = suggestions.map((item, index) => <Card setSuggestionIndex={ this.setSuggestionIndex.bind(this) } index={index} key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
+   const suggestionsList = suggestions.map((item, index) => <Card focusSearchBox={this.focusSearchBox.bind(this)} setSuggestionIndex={ this.setSuggestionIndex.bind(this) } index={index} key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
    return (
      <div className="form-wrapper">
         <div className="form">
         <input className="field"
           tabIndex="1"
+          id="input-search-field"
           placeholder="Search users by id, name and address"
           ref={input => this.search = input}
           onKeyDown={ this.handleKeyDown.bind(this)} 
