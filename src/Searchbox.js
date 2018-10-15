@@ -112,6 +112,12 @@ class Searchbox extends Component {
     });
  }
 
+  setSuggestionIndex( index ){
+    this.setState({
+      selectedSuggestionIndex: index
+    });
+  }
+
 
 
  handleInputChange(){
@@ -126,7 +132,7 @@ class Searchbox extends Component {
 
  render() {
    let { selectedSuggestionIndex, suggestions } = this.state;
-   const suggestionsList = suggestions.map((item, index) => <Card key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
+   const suggestionsList = suggestions.map((item, index) => <Card setSuggestionIndex={ this.setSuggestionIndex.bind(this) } index={index} key={item.id} address={item} selected={ selectedSuggestionIndex === index }/> );
    return (
      <div className="form-wrapper">
         <div className="form">

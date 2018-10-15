@@ -10,6 +10,9 @@
   width: 250px;
   height: 400px;
   margin-top: 100px;
+}
+#all-suggestions{
+  height: 400px;
   overflow: scroll;
 }
 
