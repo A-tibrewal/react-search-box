@@ -10,7 +10,7 @@ class Card extends Component {
 
  componentDidUpdate(){
      if( this.props.selected){
-        this.currentDiv.scrollIntoView({block: 'end', behavior: 'smooth'});
+        this.currentDiv.scrollIntoViewIfNeeded({block: 'end', behavior: 'smooth'});
      }
  }
 
