@@ -12,24 +12,39 @@ class Searchbox extends Component {
    }
  }
 
- getJson(){
-  return json.all_data;
- }
+
+
+getAllUsers( url, callback ){
+   fetch(url).then(
+     function( response ){
+       return response.json()
+     }
+   ).then( function( json ){
+     callback( json );
+   })
+ } 
+
+ 
 
  searchUsers(){
     let query = this.state.query;
-    let all_addresses = this.getJson();
-    var filtered = all_addresses.filter(function (el) {
+    let all_addresses = [];
+    let filtered = [];
+    let that = this;
+    this.getAllUsers( 'https://4bc526dc-50c9-4d6c-898d-6274ae8931a1.mock.pstmn.io/all-users.json', function(json){
+      all_addresses = json.all_data;
+      filtered = json.all_data.filter(function (el) {
       return el.id.containsString( query ) ||
-             el.name.containsString( query )||
-             el.items.containsString( query ) ||
-             el.address.containsString( query ) ||
-             el.pincode.containsString( query );
-    });
-    this.setState({ 
-      suggestions: filtered
-    })
- }
+               el.name.containsString( query )||
+               el.items.containsString( query ) ||
+               el.address.containsString( query ) ||
+               el.pincode.containsString( query );
+      });
+      that.setState({ 
+        suggestions: filtered
+      })
+ })
+}
 
 
  focusSearchBox(){

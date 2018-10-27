@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+highlight{
+  color: #007ede;
+  font-weight: bold;
+}
+
 input,
 textarea,
 [contenteditable] {
