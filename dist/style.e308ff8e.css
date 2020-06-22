@@ -1,0 +1,96 @@
+.form-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    flex-direction: column;
+  }
+  
+  input,
+  textarea,
+  [contenteditable] {
+    caret-color:#14d46f;
+  }
+  
+  div,i,span {
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .not-found {
+    padding: 20px;
+    height: 100px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    box-shadow: -4px -3px 4px 3px black;
+    border: solid thin #ccc;
+  }
+  
+  
+  
+  highlight{
+    color: #007ede;
+    font-weight: bold;
+  }
+  
+  div:focus, input:focus{
+    outline: 0;
+  }
+  .form{
+    width: 300px;
+    height: 400px;
+    margin-top: 100px;
+  }
+  #all-suggestions{
+    height: 400px;
+    overflow: scroll;
+  }
+  
+  .field{
+    padding: 10px 0px;
+    background-color: #f2f3f4;
+    width: 100%;
+    border: white;
+    text-align: center;
+  }
+  
+  .card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    line-height: 25px;
+    padding: 10px;
+    border:1px solid #e5e5e5;
+    border-top: none;
+  }
+  
+  .no-user-card{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8e8e8;
+  }
+  
+  .item-found{
+    display: flex;
+    border: solid thin #ccc;
+    align-items: center;
+    border-right: none;
+    border-left: none;
+  }
+  
+  .card.selected{
+    background-color: #fffdda;
+  }
+  
+  .list-dot{
+    height: 5px;
+    width: 5px;
+    background-color: #007ede;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
